@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- React aşağıdaki DOM Tree Görüntüsünü alır Virtual DOM denilen Sanal DOM üzerinde tarauıcın RAM'inde saklar.  -->
+
+    <!--  Tıklayın,Tıklama Sayısı, 0 gibi değerlere sadece odaklarınız Bunlar react için State'tir. Bunlarda bir değişim varsa sayfanın son güncellemesini Virtual DOM üzerinde değişen kısımlarını günceller. Sanalda güncelleme yapar.  -->
+    <!-- Sanalda saklanan component çıktısını güncel state değerine göre REAL DOM'a append eder. -->
+    <!-- İşte biz bu güncelleme işlemine RENDERING deriz. -->
+
+    <!-- Component ilk doma basılıncada Render Alır, State(Model) değişimindede render alır. (RERENDER) süreci -->
+    <!-- Kurtulduğumuz şeyler id gibi selector ifadeleri ile element seçimi yok. element addeventlistener gibi event tanımlama kodları otomatik. Ve sadece Model değişimi ile render alma, alınan renderın ram üzerinde cachelenmesi. Daha hızlı ekran değişimleri.  -->
+
+    <button id="btn">Tıklayın</button>
+    <p>
+        <span>Tıklama Sayısı</span> <b>5</b>
+    </p>
+
+
+    <script>
+
+        // REAL DOM
+        // Element Ref 
+
+        // selector
+        const buttonElement = document.getElementById("btn"); // $('#btn').onClick(() => { // code });
+        let buttonClickCount = 0;
+
+        // event binding
+        buttonElement.addEventListener('click', () => {
+            alert('butona tıklandı');
+            buttonElement.style.backgroundColor = 'green';
+            buttonClickCount++;
+
+
+            const pElement = document.querySelector('p');
+            pElement.innerHTML = `<span>Tıklama Sayısı: <b>${buttonClickCount}</b></span>`
+        });
+
+        // Model Binding
+        buttonElement.innerText = "Tıklandı";
+
+
+
+
+    </script>
+</body>
+
+</html>
